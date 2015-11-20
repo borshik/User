@@ -1,0 +1,24 @@
+{
+	"in_process_packages":
+	[
+		"Package Control"
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"BracketHighlighter",
+		"CSS Format",
+		"Emmet",
+		"FileBrowser",
+		"FileDiffs",
+		"Grunt",
+		"LESS",
+		"LiveReload",
+		"LiveStyle",
+		"npm",
+		"Open-Include",
+		"Package Control",
+		"SublimeGit",
+		"Toggle Css Format"
+	]
+}

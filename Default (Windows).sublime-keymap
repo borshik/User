@@ -1,0 +1,631 @@
+[
+
+
+
+// сделать текст заглавными буквами
+{ "keys": ["ctrl+alt+u"], "command": "upper_case" },
+// сделать текст строчными буквами
+{ "keys": ["ctrl+alt+l"], "command": "lower_case" },
+// добавить курсор на строку выше\ниже
+{ "keys": ["shift+alt+up"], "command": "select_lines", "args": {"forward": false} },
+{ "keys": ["shift+alt+down"], "command": "select_lines", "args": {"forward": true} },
+// закомментировать строку\выделение
+{ "keys": ["alt+/"], "command": "toggle_comment", "args": { "block": false } },
+// добавить комментарий
+{ "keys": ["ctrl+alt+/"], "command": "toggle_comment", "args": { "block": true } },
+// дублировать текущую строку
+{ "keys": ["ctrl+shift+d"], "command": "duplicate_line" },
+// сдвинуть строку с куросором\выделение вправо\влево
+{ "keys": ["ctrl+alt+right"], "command": "indent" },
+{ "keys": ["ctrl+alt+left"], "command": "unindent" },
+// сравнение файлов, строк
+{ "keys": ["ctrl+shift+o"], "command": "file_diff_menu" },
+{ "keys": ["ctrl+shift+e"], "command": "file_diff_menu", "args": {"cmd": ["opendiff", "$file1", "$file2"] } },
+// переходи к символу
+{ "keys": ["alt+f"], "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
+// открыть последний закрытый файл
+{ "keys": ["ctrl+shift+t"], "command": "open_recent_file", "args": {"index": 0} },
+// сохранить все открытые файлы
+{ "keys": ["ctrl+alt+shift+s"], "command": "save_all"},
+// показать сайдбар
+{ "keys": ["ctrl+b"], "command": "toggle_side_bar" },
+// открыть файлбраузер для проекта можно изменять файлы
+{
+  "keys": ["f1"],
+  "command": "dired",
+  "args": {
+  	"immediate": true,
+  	"project": true
+  }
+},
+// удалить открывающий + закрывающий тег, сдвину содержимое
+{
+	"keys": ["alt+d"],
+	"command": "run_emmet_action",
+	"args": {
+		"action": "remove_tag"
+	},
+	"context": [{
+		"key": "setting.enable_emmet_keymap"
+	}]
+},
+// вычислить выражение под курсором
+{
+	"keys": ["alt+c"],
+	"command": "run_emmet_action",
+	"args": {
+		"action": "evaluate_math_expression"
+	},
+	"context": [{
+		"key": "setting.enable_emmet_keymap"
+	}]
+},
+// вставляет парные скобки с пустой строкой между ними
+{ "keys": ["{"], "command": "insert_snippet", "args": {"contents": "{\n\t$0\n}"}, "context":
+	[
+		{
+			// "operand": "text.html.basic",
+			"operand": "source.css - source.css.embedded, source.css.embedded.html",
+			"operator": "equal",
+			"match_all": true,
+			"key": "selector"
+		}
+	]
+},
+// выделить блок/элемент
+{
+	"keys": ["alt+q"],
+	"command": "run_emmet_action",
+	"args": {
+		"action": "balance_inward"
+	},
+	"context": [{
+		"key": "emmet_action_enabled.balance_inward"
+	}]
+},
+// reindent lines выделить блок и нажать комбо и выравнивается код с табуляцией и вложенностями
+{ "keys": ["ctrl+shift+r"], "command": "reindent", "args": { "single_line": false }},
+// выделение если курсор внутри тега то все внутри тега, если в теге или аттрибутах то выделение всего тега
+{ "keys": ["alt+up"], "command": "expand_selection", "args": {"to": "tag"} },
+// завернуть выделение в абревиатуру еммета
+{
+	"keys": [
+		"alt+w"
+	],
+	"command": "wrap_as_you_type",
+	"context": [
+		{
+			"operand": false,
+			"operator": "equal",
+			"match_all": true,
+			"key": "setting.is_widget"
+		},
+		{
+			"match_all": true,
+			"key": "emmet_action_enabled.wrap_as_you_type"
+		}
+	]
+},
+// переименовать тег
+{
+	"keys": ["alt+r"],
+	"command": "rename_tag",
+	"context": [{
+		"key": "setting.enable_emmet_keymap"
+	}]
+},
+// обновить размер картинки
+{
+	"keys": ["alt+i"],
+	"command": "run_emmet_action",
+	"args": {
+		"action": "update_image_size"
+	},
+	"context": [{
+		"key": "setting.enable_emmet_keymap"
+	}]
+},
+// снятие выделения с возвращением курсора
+{ "keys": ["escape"], "command": "soft_undo", "context":
+	[
+		{ "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+	]
+},
+
+
+
+// дублирующие те что выше
+
+// закомментировать логический блок
+// {
+// 	"keys": ["alt+/"],
+// 	"command": "run_emmet_action",
+// 	"args": {
+// 		"action": "toggle_comment"
+// 	},
+// 	"context": [{
+// 		"key": "selector",
+// 		"operand": "source.css, text.xml, text.html.basic",
+// 		"operator": "equal"
+// 	}]
+// },
+// выделить содержимое внутри блока/элемента
+// {
+// 	"keys": [
+// 		"alt+up"
+// 	],
+// 	"args": {
+// 		"action": "balance_outward"
+// 	},
+// 	"command": "run_emmet_action",
+// 	"context": [
+// 		{
+// 			"key": "emmet_action_enabled.balance_outward"
+// 		}
+// 	]
+// },
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"keys": ["ctrl+alt+["],
+"command": "css_format",
+"args": {
+"action": "expand"
+}
+},
+	{
+		"keys": ["ctrl+alt+n"],
+		"command": "css_format",
+		"args": {
+			"action": "compact-ns"
+		}
+	},
+
+// ==============
+// снипеты
+// ==============
+
+// создать новый снипет
+// { "keys": ["alt+shift+s"], "command": "new_snippet" },
+// переход к селектору (ид класс тег) в цсс
+// { "keys": ["ctrl+r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+
+
+// // выделить слово, добавить следующее входждение слова к выделению
+// { "keys": ["alt+d"], "command": "expand_selection", "args": {"to": "word"} },
+// { "keys": ["alt+shift+d"], "command": "find_under_expand_skip" },
+// { "keys": ["alt+d"], "command": "find_under_expand", "context":
+// [
+// { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+// ]
+// },
+// // удалить строку
+// { "keys": ["ctrl+alt+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+// winmerge последних двух активных файлов
+// { "keys": ["ctrl+alt+w"], "command": "win_merge" },
+
+////////////////////////////////////////
+//////////// emmet hot keys ///////////
+////////////////////////////////////////
+
+
+// expand abbreviation
+// {
+// "keys": ["§"],
+// "args": {
+// "action": "expand_abbreviation"
+// },
+// "command": "run_emmet_action",
+// "context": [
+// {
+// "key": "emmet_action_enabled.expand_abbreviation"
+// }
+// ]
+// },
+
+// вызов снипета
+// {
+// "keys": ["alt+§"],
+// "command": "show_overlay",
+// "args": {
+// "overlay": "command_palette", "text": "Snippet: "
+// }
+// },
+
+
+// перейти к следующей точке редактирования
+// {
+// "keys": ["alt+right"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "next_edit_point"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// перейти к предидущей точке редактирования
+// {
+// "keys": ["alt+left"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "prev_edit_point"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// выделить предидущую точку редактирования
+// {
+// "keys": [
+// "ctrl+up"
+// ],
+// "args": {
+// "action": "select_previous_item"
+// },
+// "command": "run_emmet_action",
+// "context": [
+// {
+// "key": "emmet_action_enabled.select_previous_item"
+// }
+// ]
+// },
+
+// выделить следующую точку редактирования
+// {
+// "keys": [
+// "ctrl+down"
+// ],
+// "args": {
+// "action": "select_next_item"
+// },
+// "command": "run_emmet_action",
+// "context": [
+// {
+// "key": "emmet_action_enabled.select_next_item"
+// }
+// ]
+// },
+
+
+// ==============
+// плагины
+// ==============
+// сортировка цсс правил
+{ "keys": ["f1"], "command": "css_sorter",
+"context": [
+{
+"operand": "source.css",
+"operator": "equal",
+"match_all": true,
+"key": "selector"
+}
+]
+},
+// форматирование JS
+{ "keys": ["f1"], "command": "js_format",
+"context": [
+{
+"operand": "source.js",
+"operator": "equal",
+"match_all": true,
+"key": "selector"
+}
+]
+},
+
+//
+// fuzzy file find
+//
+{
+"keys": ["tab"],
+"command": "fuzzy_path_complete",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_path_complete"
+}
+]
+},
+{
+"keys": ["shift+tab"],
+"command": "fuzzy_path_complete",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_path_complete_back"
+}
+],
+"args": {"back": true}
+},
+{
+"keys": ["ctrl+h"],
+"command": "fuzzy_toggle_hidden",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_toggle_hidden"
+}
+]
+},
+// {
+// "keys": ["ctrl+b"],
+// "command": "fuzzy_bookmarks_load",
+// "context":
+// [
+// {
+// "operand": true,
+// "operator": "equal",
+// "match_all": true,
+// "key": "fuzzy_bookmarks_load"
+// }
+// ]
+// },
+{
+"keys": ["ctrl+o"],
+"command": "fuzzy_bookmarks_load"
+},
+{
+"keys": ["ctrl+d"],
+"command": "fuzzy_delete",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_delete"
+}
+]
+},
+// копировать
+{
+"keys": ["ctrl+c"],
+"command": "fuzzy_clipboard",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_copy"
+}
+],
+"args": {"action": "copy"}
+},
+
+// вырезать
+{
+"keys": ["ctrl+x"],
+"command": "fuzzy_clipboard",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_cut"
+}
+],
+"args": {"action": "cut"}
+},
+
+// вставить
+{
+"keys": ["ctrl+v"],
+"command": "fuzzy_clipboard",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_paste"
+}
+],
+"args": {"action": "paste"}
+},
+
+// новый файл
+{
+"keys": ["ctrl+n"],
+"command": "fuzzy_make_file",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_make_file"
+}
+]
+},
+{
+"keys": ["ctrl+shift+n"],
+"command": "fuzzy_make_folder",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_make_folder"
+}
+]
+},
+{
+"keys": ["ctrl+back_slash"],
+"command": "fuzzy_get_cwd",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_get_cwd"
+}
+]
+},
+{
+"keys": ["ctrl+forward_slash"],
+"command": "fuzzy_get_cwd",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_get_cwd"
+}
+]
+},
+{
+"keys": ["ctrl+r"],
+"command": "fuzzy_reveal",
+"context":
+[
+{
+"operand": true,
+"operator": "equal",
+"match_all": true,
+"key": "fuzzy_reveal"
+}
+]
+},
+
+// соединить текст и теги в одну строку в хтмл
+// {
+// "keys": ["ctrl+m"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "merge_lines"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// увеличить число в цсс на 1
+// {
+// "keys": ["keypad_plus"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "increment_number_by_1"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// уменьшить число в цсс на 1
+// {
+// "keys": ["keypad_minus"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "decrement_number_by_1"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// увеличить число в цсс на 10
+// {
+// "keys": ["ctrl+keypad_plus"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "increment_number_by_10"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// уменьшить число в цсс на 10
+// {
+// "keys": ["ctrl+keypad_minus"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "decrement_number_by_10"
+// },
+// "context": [{
+// "key": "setting.enable_emmet_keymap"
+// }]
+// },
+
+// // обновить значения цсс3 свойств с префиксами
+// {
+// "keys": ["alt+r"],
+// "command": "run_emmet_action",
+// "args": {
+// "action": "reflect_css_value"
+// },
+// "context": [
+// {
+// "key": "setting.enable_emmet_keymap"
+// },
+// {
+// "operand": "source.css",
+// "operator": "equal",
+// "match_all": true,
+// "key": "selector"
+// }
+// ]
+// },
+
+
+{
+	"keys": ["`"],
+	"command": "expand_abbreviation_by_tab",
+	"context": [
+		{
+			"key": "selector",
+			"match_all": true,
+			"operand": "meta.property-list.css -meta.property-value.css, source.sass, source.less, source.scss, source.stylus, text.xml, text.html.basic - source.php - keyword.control.php -source.js.embedded.html, text.haml, text.html.ruby, text.html.twig, string",
+			"operator": "equal"
+		},
+		{
+			"key": "selection_empty",
+			"match_all": true
+		},
+		// {
+		// "key": "setting.disable_tab_abbreviations",
+		// "operator": "equal",
+		// "operand": false,
+		// "match_all": true
+		// },
+		// {
+		// "key": "auto_complete_visible",
+		// "operand": false, // необходимио фалсе, для раскрытия еммета при наличие "полей"
+		// "operator": "equal",
+		// "match_all": true
+		// },
+		{
+			"key": "is_abbreviation",
+			"match_all": true
+		}
+	]
+}
+
+]
